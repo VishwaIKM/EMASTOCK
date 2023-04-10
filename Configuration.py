@@ -22,22 +22,26 @@ class Config:
     config_path = os.path.join(application_path, config_name)
     print("CONFIG PATH ---> "+ config_path)
     myfile = Path(config_path)
+
+    
     def LoadConfig():
+        print("--------==> Config Parse    <==-------")
         if Config.myfile.is_file():
             try:
                 config_P = cfg.RawConfigParser()
                 config_P.read(Config.config_path) 
-                Config.CONFIG_SYMBOL = config_P.get('Database','SYMBOL') 
-                Config.CONFIG_IS_RANGE_ENABLE = config_P.getboolean('Calculation','IS_RANGE_ENABLE')
-                Config.CONFIG_START_DATE = config_P.get('Calculation','StartDate')
-                Config.CONFIG_END_DATE = config_P.get('Calculation','EndDate')
-                Config.CONFIG_RANGE = config_P.getint('Calculation','Range')
-                Config.CONFIG_EMA_TYPE = config_P.get('Database','EMAType') 
-                Config.CONFIG_EMA =  config_P.get('Database','EMAValue') 
+                Config.CONFIG_SYMBOL = config_P.get('Indicator','SYMBOL') 
+                Config.CONFIG_IS_RANGE_ENABLE = config_P.getboolean('Database','IS_RANGE_ENABLE')
+                Config.CONFIG_START_DATE = config_P.get('Database','StartDate')
+                Config.CONFIG_END_DATE = config_P.get('Database','EndDate')
+                Config.CONFIG_RANGE = config_P.getint('Database','Range')
+                Config.CONFIG_EMA_TYPE = config_P.get('Indicator','EMAType') 
+                Config.CONFIG_EMA =  config_P.get('Indicator','EMAValue') 
             except:
                 print("((ERROR):==>) Something went wrong while loading Configuration.")
         else:
             print("CONFIG FILE NOT FOUND")
+    
     
         
 #FOR TESTING ----------------->
