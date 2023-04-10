@@ -1,6 +1,7 @@
 import Configuration as conf
-class IndicatorCalta:
-    pass
+class Initializer:
+    def Run():
+        conf.Config.LoadConfig() ## LOAD CONFIG
 
 if __name__ == '__main__':
-    conf.Config.LoadConfig() ## LOAD CONFIG
+    Initializer.Run()
