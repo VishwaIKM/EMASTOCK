@@ -1,6 +1,7 @@
 import DataManagment as Data_M
 import Configuration as Conf
 import matplotlib.pyplot as plt
+import pandas as pd
 class IndicatorPrediction:
     DATA_CLUB_VALUE = None
     DATA_FRAME_AFTER_CLUB =None
@@ -28,7 +29,7 @@ class IndicatorPrediction:
             #print(ema)
             gp['EMA'+str(Conf.Config.CONFIG_EMA)] = ema
             #print(gp)
-            gp.to_csv('Output.csv')
+            gp.to_csv('RAWDATA.csv')
             # Comparison plot b/w stock values & EMA
             plt.plot(gp['Close'], label="Stock Values")
             plt.plot(ema, label="EMA Values")
@@ -36,10 +37,8 @@ class IndicatorPrediction:
             plt.ylabel("Price")
             plt.legend()
             plt.show()
-
-
-
-        #DrawTheGraph
+            IndicatorPrediction.DATA_CLUB_VALUE = gp
+            #print(IndicatorPrediction.DATA_CLUB_VALUE)
 
 
 #FOR TESTING ----------------->
