@@ -1,9 +1,11 @@
 # THIS SCRIPT WILL PROVIDE THE DATA FRAME ACCORDING TO SYMBOL AND DATE RANGE
 from datetime import datetime
 import pandas as pd
+import os
+import sys
 
 # var
-_Path = "D:/WorkSpace/BackTestProject/DataBase/"  # for time being this is fix will
+_Path = os.path.dirname(os.path.dirname(__file__)) + "\\DataBase\\"  # for time being this is fix will
 
 
 # figure out later if as be will
@@ -20,6 +22,7 @@ class DataBaseUpdate:
 
     def gui_symbol_and_date_change(self, symbol_name: str, start_date: datetime, end_date: datetime) -> pd.DataFrame:
         # print(f"SD:{start_date} and ED:{end_date}")
+        print(_Path)
         self._DataFrameSymbolFilter = _symbol_change(symbol_name)
         self._DataFrameDateRangeFilter = _date_range_change(start_date, end_date, self._DataFrameSymbolFilter)
         self._DataFrameDayWiseFilter = _data_club_day_wise(self._DataFrameDateRangeFilter)
