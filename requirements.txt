@@ -1,5 +1,4 @@
 pandas
-streamlit
 numpy
 Matplotlib
 configparser

@@ -15,7 +15,7 @@ class DataBaseUpdate:
     _DataFrameDateRangeFilter: pd.DataFrame = None
     _DataFrameDayWiseFilter: pd.DataFrame = None
 
-    def __int__(self):
+    def __inti__(self):
         pass
 
     def gui_symbol_and_date_change(self, symbol_name: str, start_date: datetime, end_date: datetime) -> pd.DataFrame:
