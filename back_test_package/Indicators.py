@@ -1,25 +1,28 @@
 # THIS SCRIPT WILL PROVIDE THE INDICATOR CALCULATION
 import pandas as pd
+from abc import ABCMeta, abstractmethod
 
 
-class ExponentialMovingAverage:
-
-    def __int__(self, data_frame: pd.DataFrame, span: int, price: str):
-        self.data_frame = data_frame
+class BaseIndicator(metaclass=ABCMeta):
+    def __int__(self, df: pd.DataFrame, span: int, price: str) -> None:
+        self.df = df
         self.span = span
         self.price = price
 
-    def ema_data_add(self) -> pd.DataFrame:
+    def start_indicator_calculation(self) -> None:
+        self.add_indicator()
+        self.base_graph(self.price)
+
+    def base_graph(self, param: str) -> pd.Series:
+        return self.df[param]
+
+    @abstractmethod
+    def add_indicator(self) -> pd.DataFrame:
         pass
 
 
-class ExponentialMovingLongShortAverage:
+class ExponentialMovingAverage(BaseIndicator, metaclass=ABCMeta):
+    def add_indicator(self) -> pd.DataFrame:
+        self.df['EMA ' + str(self.span)] = self.df[self.price].ewm(span=self.span, adjust=False).mean()
+        return self.df
 
-    def __int__(self, data_frame: pd.DataFrame, short_span: int, long_span: int, price: str):
-        self.data_frame = data_frame
-        self.short_span = short_span
-        self.long_span = long_span
-        self.price = price
-
-    def ema_long_short_add(self) -> pd.DataFrame:
-        pass
