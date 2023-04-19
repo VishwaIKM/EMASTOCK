@@ -14,7 +14,7 @@ setup(
     description='This Project will present the analysis for stock Market historical data',
     long_description=readme,
     author='IKM',
-    author_email='vishwasinghikm@outlook.com',
+    author_email='vishwa@ikminvestor.com',
     url='ProjectGitServerPath',  # will add when a git repo create in Server
     license=License,
     packages=find_packages(exclude='tests_package')
